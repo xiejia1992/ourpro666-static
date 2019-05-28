@@ -1,17 +1,19 @@
 <template>
     <div>
-  	    <div class="app">
-         <router-view></router-view>
-         <router-view name="LoginView"></router-view>
-  	    </div>
+        <div class="app">
+            <router-view></router-view>
+            <router-view name="LoginView"></router-view>
+            <router-view name="RegisterView"></router-view>
+        </div>
     </div>
 </template>
 
 <script>
     import homeView from './views/homeView.vue'
     export default {
-        name:'app',
+        name: 'app',
     }
 </script>
 <style>
+
 </style>

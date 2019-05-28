@@ -1,5 +1,5 @@
 <template>
-    <div class="loginView">
+    <div class="resgisterView">
         <el-form :model="ruleForm" :rules="$rules.common" ref="ruleForm" label-width="100px" class="demo-ruleForm">
             <el-form-item label="用户名" prop="name">
                 <el-input v-model="ruleForm.name"></el-input>
@@ -18,10 +18,11 @@
 <script>
     // import axios from 'axios';
     //import Vue from 'Vue';
+    localStorage.setItem('Authorization', '');
     import { mapMutations } from 'vuex';
     console.log(mapMutations)
     export default {
-        name: "loginView",
+        name: "resgisterView",
         data() {
             return {
                 ruleForm: {
@@ -40,24 +41,16 @@
                     if(valid) {
                         var userName = _this.$data.ruleForm.name;
                         var password = _this.$data.ruleForm.password;
-                        _this.$ajax.post('http://192.168.0.102:8000/login', {
+                        _this.$ajax.post('http://192.168.0.102:8000/register', {
                                 username: userName,
                                 password: password
                             })
                             .then(function(response) {
                                 if(response.data.status_code == '200') {
-                                    _this.changeLogin({
-                                        Authorization: response.data.message
-                                    });
-                                    _this.$router.push('/');
-                                } else {
-                                    _this.changeLogin({
-                                        Authorization: ''
-                                    });
+                                    _this.$router.push('/login');
                                 }
                             })
                             .catch(function(error) {
-                                console.log(error);
                                 _this.changeLogin({
                                     Authorization: ''
                                 });

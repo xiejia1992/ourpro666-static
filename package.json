@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^0.10.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^6.4.1",
     "babel-plugin-component": "^1.1.1",
@@ -28,6 +29,7 @@
     "style-loader": "^0.10.0",
     "url-loader": "^1.1.2",
     "vue": "^2.6.10",
+    "vue-axios": "^2.1.4",
     "vue-loader": "^11.0.0",
     "vue-router": "^2.2.0",
     "vue-template-compiler": "^2.6.10",
@@ -40,6 +42,8 @@
     "babel-eslint": "^7.1.1",
     "babel-register": "^6.22.0",
     "requset": "0.0.1-security",
-    "vue-style-loader": "^2.0.0"
+    "vee-validate": "^2.0.0-rc.25",
+    "vue-style-loader": "^2.0.0",
+    "vuex": "^3.1.1"
   }
 }

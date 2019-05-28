@@ -6,46 +6,65 @@ import HomeView from '../views/homeView.vue';
 import SwitcherView from '../views/switcherView.vue';
 
 import LoginView from '../views/loginView.vue';
-
+import RegisterView from '../views/registerView.vue';
+console.log(RegisterView)
 Vue.use(Router)
 
-export default new Router({
- 	routes:[
- 		{
- 			path:'/',
-		 	redirect: '/pages/'
- 		},
- 		{
- 			path:'/pages',
- 			component:PagesView,
- 			children:[
- 				{
- 					path:'',
- 					redirect:'/pages/home'
- 				},
- 				{
-		          	path: 'home',
-		          	name: 'HomeView',
-		          	component: HomeView
-		        },
-		        {
-		          	path: 'switch',
-		          	name: 'SwitcherView',
-		          	component: SwitcherView
-		        },
-		        
- 			]
- 		},
- 		{
- 			path:'/login',
- 			name:'LoginView',
- 			component:LoginView
- 		},
- 		{
-	      path: '*',
-	      redirect: '/pages/'
-	    }
- 		
- 	]
-})
+const router = new Router({
+	routes: [{
+			path: '/',
+			redirect: '/pages/'
+		},
+		{
+			path: '/pages',
+			component: PagesView,
+			children: [{
+					path: '',
+					redirect: '/pages/home'
+				},
+				{
+					path: 'home',
+					name: 'HomeView',
+					component: HomeView
+				},
+				{
+					path: 'switch',
+					name: 'SwitcherView',
+					component: SwitcherView
+				},
 
+			]
+		},
+		{
+			path: '/login',
+			name: 'LoginView',
+			component: LoginView
+		},
+		{
+			path: '/register',
+			name: 'registerView',
+			component: RegisterView
+		},
+		{
+			path: '*',
+			redirect: '/pages/'
+		}
+
+	]
+});
+router.beforeEach((to, from, next) => {
+	if(to.path === '/login') {
+		next();
+	} else if(to.path === '/register') {
+		next();
+	} else {
+		let token = localStorage.getItem('Authorization');
+
+		if(token === 'null' || token === '') {
+			next('/login');
+		} else {
+			next();
+		}
+	}
+});
+export default router;
