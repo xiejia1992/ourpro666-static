@@ -1,33 +1,49 @@
 <template>
     <div class="banner">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-            <el-menu-item index="1">
-                <router-link :to="{ name: 'HomeView'}">Home</router-link>
-            </el-menu-item>
-            <el-submenu index="2">
-                <template slot="title">我的工作台</template>
-                <el-menu-item index="2-1">选项1</el-menu-item>
-                <el-menu-item index="2-2">选项2</el-menu-item>
-                <el-menu-item index="2-3">选项3</el-menu-item>
-                <el-submenu index="2-4">
-                    <template slot="title">选项4</template>
-                    <el-menu-item index="2-4-1">选项1</el-menu-item>
-                    <el-menu-item index="2-4-2">选项2</el-menu-item>
-                    <el-menu-item index="2-4-3">选项3</el-menu-item>
-                </el-submenu>
-            </el-submenu>
-            <el-menu-item index="3" disabled> 123</el-menu-item>
-            <el-menu-item index="4">
-                <router-link :to="{ name: 'SwitcherView'}">switcher</router-link>
-            </el-menu-item>
-            <el-menu-item index="4">
-                <router-link :to="{ name: 'LoginView'}">login out</router-link>
-            </el-menu-item>
-        </el-menu>
+        <el-container>
+            <el-header>
+                <el-menu>
+                    <el-menu-item >
+                        123
+                    </el-menu-item>
+                     <el-menu-item justify="end">
+                        456
+                    </el-menu-item>
+                </el-menu>
+            </el-header>
+            <el-container>
+                <el-aside>
+                    <el-menu default-active="1" class="el-menu-vertical-demo" :collapse="true">
+                        <el-menu-item index="1">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">导航二</span>
+                        </el-menu-item>
+                        <el-menu-item index="2" disabled>
+                            <i class="el-icon-document"></i>
+                            <span slot="title">导航三</span>
+                        </el-menu-item>
+                        <el-menu-item index="3">
+                            <i class="el-icon-setting"></i>
+                            <span slot="title">导航四</span>
+                        </el-menu-item>
+                    </el-menu>
+                </el-aside>
+                <el-container>
+                    <el-main>
+                    </el-main>
+                    <el-footer>Footer</el-footer>
+                </el-container>
+            </el-container>
+            
+        </el-container>
+
+            
     </div>
 </template>
 
 <script>
+    import { mapState } from 'vuex';
+
     export default {
         name: 'banner',
         data() {
@@ -35,6 +51,11 @@
                 activeIndex: '1',
                 activeIndex2: '1'
             };
+        },
+        computed: {
+            ...mapState({
+                nav: state => state.nav
+            })
         },
         methods: {
             handleSelect(key, keyPath) {
@@ -45,5 +66,8 @@
 </script>
 
 <style>
-
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 200px;
+        min-height: 400px;
+    }
 </style>

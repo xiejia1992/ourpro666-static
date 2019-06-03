@@ -64,6 +64,10 @@ module.exports = {
 			template: 'index.html',
 			inject: 'body'
 		}),
+		new webpack.ProvidePlugin({
+                  $: "jquery",
+                  jQuery: "jquery"
+              }),
 		new ExtractTextPlugin("styles.css")
 	]
 }

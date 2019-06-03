@@ -7,14 +7,15 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import rules from '../src/common/rules.js';
 import store from '../src/store/store.js';
-console.log(store)
+import '../src/css/common.css';
+
+
 Vue.prototype.$rules = rules;
 Vue.prototype.$ajax = axios;
 Vue.prototype.$ajax.interceptors.request.use(
 	config => {
 		if(localStorage.getItem('Authorization')) {
 			config.headers.auth = localStorage.getItem('Authorization');
-			console.log(localStorage.getItem('Authorization'))
 			//config.headers.auth = localStorage.getItem('Authorization');
 		}
 

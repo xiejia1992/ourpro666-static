@@ -7,6 +7,8 @@ import SwitcherView from '../views/switcherView.vue';
 
 import LoginView from '../views/loginView.vue';
 import RegisterView from '../views/registerView.vue';
+import ForgetView from '../views/forgetView.vue';
+import ResetpassView from '../views/resetpassView.vue';
 console.log(RegisterView)
 Vue.use(Router)
 
@@ -42,8 +44,18 @@ const router = new Router({
 		},
 		{
 			path: '/register',
-			name: 'registerView',
+			name: 'RegisterView',
 			component: RegisterView
+		},
+		{
+			path: '/forget',
+			name: 'ForgetView',
+			component: ForgetView
+		},
+		{
+			path: '/resetpass',
+			name: 'ResetpassView',
+			component: ResetpassView
 		},
 		{
 			path: '*',
@@ -52,7 +64,7 @@ const router = new Router({
 
 	]
 });
-router.beforeEach((to, from, next) => {
+/*router.beforeEach((to, from, next) => {
 	if(to.path === '/login') {
 		next();
 	} else if(to.path === '/register') {
@@ -66,5 +78,5 @@ router.beforeEach((to, from, next) => {
 			next();
 		}
 	}
-});
+});*/
 export default router;

@@ -13,6 +13,6 @@ app.use(webpackDevMiddleware(compiler, {
 }));
 
 // Serve the files on port 3011.
-app.listen(3011, function() {
-	console.log('Example app listening on port 3011!\n');
+app.listen(3012, function() {
+	console.log('Example app listening on port 3012!\n');
 });

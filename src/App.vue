@@ -4,6 +4,7 @@
             <router-view></router-view>
             <router-view name="LoginView"></router-view>
             <router-view name="RegisterView"></router-view>
+            <router-view name="ForgetView"></router-view>
         </div>
     </div>
 </template>
