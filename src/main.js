@@ -27,7 +27,7 @@ Vue.prototype.$ajax.interceptors.request.use(
 
 Vue.use(ElementUI);
 Vue.use(router);
-
+console.log('abcdf')
 var app = new Vue({
 	el: '#app',
 	router,

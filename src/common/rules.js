@@ -1,3 +1,5 @@
+import axios from 'axios';
+console.log(axios)
 const validatePhone = (rule, value, callback) => {
 	let patter = new RegExp("^1[0-9]{10}$"); //简单验证11位手机号
 	if(!patter.test(value)) {
@@ -7,7 +9,7 @@ const validatePhone = (rule, value, callback) => {
 	}
 };
 const validateNumber = (rule, value, callback) => {
-	let patter = new RegExp("^[0-9]{1,}$"); 
+	let patter = new RegExp("^[0-9]{1,}$");
 	if(!patter.test(value)) {
 		return callback(new Error("请输入正确格式的手机号！"));
 	} else {
@@ -16,13 +18,29 @@ const validateNumber = (rule, value, callback) => {
 };
 const validateEmail = (rule, value, callback) => {
 	let patter = new RegExp("^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$");
-	console.log(value)
-	console.log(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value))
 	if(!patter.test(value)) {
 		return callback(new Error("请输入正确格式的手机号！"));
 	} else {
 		callback(); //必须有此项回调，否则验证会一直不通过
 	}
+};
+const checkUser = (rule, value, callback) => {
+	axios.post('http://192.168.0.103:8000/api/check_register', {
+			user: value
+		})
+		.then(function(response) {
+			console.log(response.data.status_code);
+			if(response.data.status_code === 409) {
+				return callback("手机号已被注册");
+				//return callback(new Error("请输入正确格式的手机号！"));
+			} else {
+				callback()
+				//return callback(new Error("请输入正确格式的手机号！"));
+			}
+		})
+		.catch(function(error) {
+			callback(new Error('服务异常'))
+		});
 };
 const validatePassword = (rule, value, callback) => {
 	let patter = new RegExp("^[a-zA-z0-9]{6,16}$");
@@ -33,7 +51,7 @@ const validatePassword = (rule, value, callback) => {
 	}
 };
 const validateName = (rule, value, callback) => {
-	let patter = new RegExp("^[a-zA-z0-9]{1,128}$"); 
+	let patter = new RegExp("^[a-zA-z0-9]{1,128}$");
 	if(!patter.test(value)) {
 		return callback(new Error("请输入正确格式的手机号！"));
 	} else {
@@ -44,14 +62,17 @@ export default {
 	common: {
 		phone: [{
 			required: true,
-			trigger: "blur",
+			//trigger: "blur",
 			message: "手机号不能为空"
 		}, {
 			validator: validatePhone,
-			trigger: "blur",
+			//trigger: "blur",
 			message: "手机号格式错误"
-		}],
-		emailcode:[{
+		}/*, {
+			validator: checkUser,
+			message: "手机号已经被注册"
+		}*/],
+		emailcode: [{
 			required: true,
 			trigger: "blur",
 			message: "邮箱验证码不能为空"
@@ -60,11 +81,11 @@ export default {
 			trigger: "blur",
 			message: "邮箱验证码格式错误"
 		}],
-		code:[{
+		code: [{
 			required: true,
 			trigger: "blur",
 			message: "验证码不能为空"
-		},{
+		}, {
 			validator: validateNumber,
 			trigger: "blur",
 			message: "验证码格式错误"
@@ -73,9 +94,9 @@ export default {
 			required: true,
 			trigger: "blur",
 			message: "邮箱不能为空"
-		},{
-			type: 'email', 
-			message: '邮箱地址格式错误', 
+		}, {
+			type: 'email',
+			message: '邮箱地址格式错误',
 			trigger: ['blur']
 		}],
 		name: [{

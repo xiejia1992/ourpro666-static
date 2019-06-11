@@ -3,12 +3,10 @@ import Router from 'vue-router';
 
 import PagesView from '../views/pagesView.vue';
 import HomeView from '../views/homeView.vue';
-import SwitcherView from '../views/switcherView.vue';
 
 import LoginView from '../views/loginView.vue';
 import RegisterView from '../views/registerView.vue';
 import ForgetView from '../views/forgetView.vue';
-import ResetpassView from '../views/resetpassView.vue';
 console.log(RegisterView)
 Vue.use(Router)
 
@@ -28,12 +26,7 @@ const router = new Router({
 					path: 'home',
 					name: 'HomeView',
 					component: HomeView
-				},
-				{
-					path: 'switch',
-					name: 'SwitcherView',
-					component: SwitcherView
-				},
+				}
 
 			]
 		},
@@ -51,11 +44,6 @@ const router = new Router({
 			path: '/forget',
 			name: 'ForgetView',
 			component: ForgetView
-		},
-		{
-			path: '/resetpass',
-			name: 'ResetpassView',
-			component: ResetpassView
 		},
 		{
 			path: '*',

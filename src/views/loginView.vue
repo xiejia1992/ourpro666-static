@@ -6,15 +6,15 @@
                     <div class="form-area-title">登录</div>
                 </el-form-item>
                 <el-form-item v-show="placeradio==='0'" style="position: relative;" prop="email">
-                    <el-input v-model="ruleForm.email" placeholder="使用邮箱注册"></el-input>
-                    <span class="change" @click="userchange()">使用手机号注册</span>
+                    <el-input v-model="ruleForm.email" placeholder="使用邮箱登录"></el-input>
+                    <span class="change" @click="userchange()">使用手机号登录</span>
                 </el-form-item>
                 <el-form-item v-show="placeradio==='1'" style="position: relative;" prop="phone">
-                    <el-input v-model="ruleForm.phone" placeholder="使用手机号注册"></el-input>
-                    <span class="change" @click="userchange()">使用邮箱注册</span>
+                    <el-input v-model="ruleForm.phone" placeholder="使用手机号登录"></el-input>
+                    <span class="change" @click="userchange()">使用邮箱登录</span>
                 </el-form-item>
                 <el-form-item prop="password">
-                    <el-input v-model="ruleForm.password" placeholder="密码为6-16位数字和英文组合"></el-input>
+                    <el-input type="password" v-model="ruleForm.password" placeholder="密码为6-16位数字和英文组合"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-col :span="24">
@@ -22,8 +22,8 @@
                     </el-col>
                 </el-form-item>
                 <el-form-item style="text-align: right;">
-                    <router-link :to="{ name: 'LoginView' }">忘记密码 | </router-link>
-                    <router-link :to="{ name: 'RegisterView' }">新用户注册</router-link>
+                    <router-link :to="{ name: 'ForgetView' }">忘记密码 | </router-link>
+                    <router-link :to="{ name: 'RegisterView' }">新用户登录</router-link>
                 </el-form-item>
             </el-form>
         </div>
@@ -31,8 +31,6 @@
 </template>
 
 <script>
-    // import axios from 'axios';
-    //import Vue from 'Vue';
     import { mapMutations } from 'vuex';
     console.log(mapMutations)
     export default {
@@ -80,7 +78,7 @@
                         var userName = _this.$data.ruleForm.phone;
                     }
                     var password = _this.$data.ruleForm.password;
-                    _this.$ajax.post('http://192.168.0.103:8000/login', {
+                    _this.$ajax.post('http://192.168.0.102:8000/api/login', {
                             user: userName,
                             password: password
                         })
@@ -111,9 +109,5 @@
 <style scoped>
     a:-webkit-any-link {
         font-size: 12px;
-    }
-    
-    .form-area {
-        height: 300px;
     }
 </style>
