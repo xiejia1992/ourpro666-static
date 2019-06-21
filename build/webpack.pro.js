@@ -14,7 +14,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, '../static'), // 项目的打包文件路径
-		filename: '[name].[chunkhash:8].js',
+		filename: 'js/[name].[chunkhash:8].js',
 	},
 	devtool: 'inline-source-map',
 	resolve: {
@@ -67,7 +67,7 @@ module.exports = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			filename: './html/index.html',
+			filename: 'index.html',
 			template: 'index.html',
 			inject: 'body'
 		}),
