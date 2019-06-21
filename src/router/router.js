@@ -3,6 +3,7 @@ import Router from 'vue-router';
 
 import PagesView from '../views/pagesView.vue';
 import HomeView from '../views/homeView.vue';
+import UserView from '../views/userView.vue';
 
 import LoginView from '../views/loginView.vue';
 import RegisterView from '../views/registerView.vue';
@@ -26,6 +27,11 @@ const router = new Router({
 					path: 'home',
 					name: 'HomeView',
 					component: HomeView
+				},
+				{
+					path: 'user',
+					name: 'UserView',
+					component: UserView
 				}
 
 			]

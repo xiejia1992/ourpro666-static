@@ -14,6 +14,12 @@
     }
 </script>
 
-<style>
-
+<style scoped>
+    .el-image__inner {
+        border-radius: 50px;
+        height: 100%
+    }
+    .el-input__inner {
+        width: auto;
+    }
 </style>

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import homeView from './views/homeView.vue'
+    //import homeView from './views/homeView.vue'
     export default {
         name: 'app',
     }

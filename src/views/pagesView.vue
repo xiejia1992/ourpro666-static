@@ -6,14 +6,17 @@
                     <div><img src="../css/zxlogo.png" style="height:30px;margin-top: 15px;" /></div>
                     <div class="menu-header-right">
                         <el-dropdown trigger="click">
-                          <span class="el-dropdown-link">
+                            <span class="el-dropdown-link">
                             1106305522@qq.com <i class="el-icon-arrow-down"></i>
                           </span>
-                          <el-dropdown-menu class="" slot="dropdown">
-                            <el-dropdown-item>个人信息</el-dropdown-item>
-                            <el-dropdown-item>个人信息</el-dropdown-item>
-                            <el-dropdown-item divided style="color: #F56C6C;">退出</el-dropdown-item>
-                          </el-dropdown-menu>
+                            <el-dropdown-menu class="" slot="dropdown">
+                                <router-link :to="{ path: '/pages/user' }">
+                                    <el-dropdown-item>
+                                        个人信息
+                                    </el-dropdown-item>
+                                </router-link>
+                                <el-dropdown-item divided style="color: #F56C6C;">退出</el-dropdown-item>
+                            </el-dropdown-menu>
                         </el-dropdown>
                     </div>
                 </div>
@@ -37,7 +40,7 @@
                 </el-aside>
                 <el-container>
                     <el-main style="height: 1000px;background: #F2F6FC;">
-
+                        <router-view></router-view>
                     </el-main>
                     <el-footer></el-footer>
                 </el-container>
@@ -47,7 +50,7 @@
 </template>
 <script>
     import { mapState } from 'vuex';
-
+    import HomeView from './homeView.vue';
     export default {
         name: 'pages-view',
 
@@ -90,50 +93,64 @@
         border: none;
     }
     
-    .el-aside{
+    .el-main {
+        padding: 0px;
+    }
+    
+    .el-aside {
         border-right: 1px solid #e6e6e6;
     }
+    
     .el-header {
         padding-right: 0px;
         border-bottom: 1px solid #e6e6e6;
     }
-    .el-header .menu-header{
+    
+    .el-header .menu-header {
         line-height: 60px;
         position: relative;
     }
-   .el-header .menu-header:before{
-       content: "";
-       display: flex;
-       clear: both;
-   }
-   .el-header .menu-header div{
-       float: left;
-   }
+    
+    .el-header .menu-header:before {
+        content: "";
+        display: flex;
+        clear: both;
+    }
+    
+    .el-header .menu-header div {
+        float: left;
+    }
+    
     body {
         margin: 0px;
     }
-    .menu-header-right{
+    
+    .menu-header-right {
         position: absolute;
         right: 0px;
         top: 0px;
     }
-    .quickadd{
-        padding:0px 20px;
+    
+    .quickadd {
+        padding: 0px 20px;
         color: #fff;
         font-size: 14px;
         cursor: pointer;
         border-left: 1px solid #e6e6e6;
         height: 100%;
     }
-    .menu-header-right{
+    
+    .menu-header-right {
         margin-right: 20px;
         width: 180px;
         text-align: center;
     }
-    .el-dropdown-link{
+    
+    .el-dropdown-link {
         color: #409EFF;
     }
-    .el-dropdown-menu{
+    
+    .el-dropdown-menu {
         width: 180px;
         text-align: center;
     }
