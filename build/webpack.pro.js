@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 function resolve(dir) {
 	return path.join(__dirname, '..', dir)
 }
@@ -66,6 +66,7 @@ module.exports = {
 		]
 	},
 	plugins: [
+		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			filename: 'index.html',
 			template: 'index.html',

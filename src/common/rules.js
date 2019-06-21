@@ -1,5 +1,6 @@
 import axios from 'axios';
 console.log(axios)
+
 const validatePhone = (rule, value, callback) => {
 	let patter = new RegExp("^1[0-9]{10}$"); //简单验证11位手机号
 	if(!patter.test(value)) {
