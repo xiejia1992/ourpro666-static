@@ -55,13 +55,14 @@ const router = new Router({
 			path: '*',
 			redirect: '/pages/'
 		}
-
 	]
 });
-/*router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
 	if(to.path === '/login') {
 		next();
 	} else if(to.path === '/register') {
+		next();
+	} else if(to.path === '/forget') {
 		next();
 	} else {
 		let token = localStorage.getItem('Authorization');
@@ -72,5 +73,5 @@ const router = new Router({
 			next();
 		}
 	}
-});*/
+});
 export default router;

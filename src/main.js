@@ -5,29 +5,30 @@ import App from './App.vue';
 import router from '../src/router/router.js';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
+import publicConfig from '../src/common/public.js';
 import rules from '../src/common/rules.js';
 import store from '../src/store/store.js';
 import '../src/css/common.css';
 
-
 Vue.prototype.$rules = rules;
+
+axios.defaults.baseURL=publicConfig.api;
 Vue.prototype.$ajax = axios;
 Vue.prototype.$ajax.interceptors.request.use(
 	config => {
 		if(localStorage.getItem('Authorization')) {
 			config.headers.auth = localStorage.getItem('Authorization');
-			//config.headers.auth = localStorage.getItem('Authorization');
 		}
-
 		return config;
 	},
 	error => {
 		return Promise.reject(error);
 	});
-
+	
 Vue.use(ElementUI);
+
 Vue.use(router);
-console.log('abcdf')
+
 var app = new Vue({
 	el: '#app',
 	router,

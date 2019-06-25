@@ -71,7 +71,7 @@
         methods: {
             getUsers() {
                 console.log(this.$ajax)
-                this.$ajax.get('http://192.168.0.103:8000/api/users')
+                this.$ajax.get('/api/users')
                     .then(function(response) {
                         console.log(response);
                     })

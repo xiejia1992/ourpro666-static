@@ -53,7 +53,6 @@
                 ruleForm: {
                     email: '',
                     password: '',
-                    password: '',
                     phone: '',
                     code: '',
                     resetpass: '',
@@ -183,7 +182,7 @@
                     } else {
                         var userName = _this.$data.ruleForm.phone;
                         var checkUser = (rule, value, callback) => {
-                            _this.$ajax.post('http://192.168.0.102:8000/api/forget_password', {
+                            _this.$ajax.post('/api/forget_password', {
                                     user: value
                                 })
                                 .then(function(response) {
@@ -264,7 +263,7 @@
                             userName = _this.$data.ruleForm.phone;
                             codeNum = _this.$data.ruleForm.code;
                         }
-                        _this.$ajax.post('http://192.168.0.102:8000/api/reset_password', {
+                        _this.$ajax.post('/api/reset_password', {
                                 user: userName,
                                 identifying_code: codeNum,
                                 new_password: _this.$data.ruleForm.password

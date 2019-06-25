@@ -78,7 +78,7 @@
                         var userName = _this.$data.ruleForm.phone;
                     }
                     var password = _this.$data.ruleForm.password;
-                    _this.$ajax.post('http://192.168.0.102:8000/api/login', {
+                    _this.$ajax.post('/api/login', {
                             user: userName,
                             password: password
                         })

@@ -107,7 +107,7 @@
                 if(this.$data.placeradio == '0') {
                     console.log(this.$refs.ruleForm.rules.email)
                     checkEmailUser = (rule, value, callback) => {
-                        this.$ajax.post('http://192.168.0.102:8000/api/check_register', {
+                        this.$ajax.post('/api/check_register', {
                                 user: value
                             })
                             .then(function(response) {
@@ -155,7 +155,7 @@
                     
                 } else {
                     checkUser = (rule, value, callback) => {
-                        this.$ajax.post('http://192.168.0.102:8000/api/check_register', {
+                        this.$ajax.post('/api/check_register', {
                                 user: value
                             })
                             .then(function(response) {
@@ -224,7 +224,7 @@
                         dataSend['identifying_code'] = _this.$data.ruleForm.code;
                         dataSend['password'] = _this.$data.ruleForm.password;
                     }
-                    _this.$ajax.post('http://192.168.0.102:8000/api/register', dataSend)
+                    _this.$ajax.post('/api/register', dataSend)
                         .then(function(response) {
                             if(response.data.status_code == '200') {
                                 _this.$router.push('/login');
