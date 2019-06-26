@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+var config=require('../config/index.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
@@ -11,6 +12,7 @@ module.exports = {
 	entry: {
 		'main': './src/main.js',
 		'dev': './src/app.js',
+		'vendor':['jquery','element-ui']
 	},
 	output: {
 		path: path.resolve(__dirname, '../static'), // 项目的打包文件路径
@@ -68,14 +70,17 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			filename: 'index.html',
+			filename:config.build.index,
 			template: 'index.html',
 			inject: 'body'
 		}),
 		new webpack.ProvidePlugin({
-	              $: "jquery",
-	              jQuery: "jquery"
-	          }),
+	          $: "jquery",
+	          jQuery: "jquery"
+	      }),
 		new ExtractTextPlugin("./css/styles.css"),
+		new webpack.DefinePlugin({
+		  API_URL:"'http://140.143.167.11'"
+		})
 	]
 }

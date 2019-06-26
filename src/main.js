@@ -12,7 +12,7 @@ import '../src/css/common.css';
 
 Vue.prototype.$rules = rules;
 
-axios.defaults.baseURL=publicConfig.api;
+axios.defaults.baseURL=API_URL;
 Vue.prototype.$ajax = axios;
 Vue.prototype.$ajax.interceptors.request.use(
 	config => {

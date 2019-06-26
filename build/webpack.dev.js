@@ -24,6 +24,9 @@ module.exports = merge(webpackBaseConfig, {
 	          }),
 		new ExtractTextPlugin("styles.css"),
 		new webpack.NamedModulesPlugin(),
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new webpack.DefinePlugin({
+		  API_URL:"'http://192.168.0.102'"
+		})
 	]
 });
