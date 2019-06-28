@@ -5,7 +5,6 @@ import App from './App.vue';
 import router from '../src/router/router.js';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-import publicConfig from '../src/common/public.js';
 import rules from '../src/common/rules.js';
 import store from '../src/store/store.js';
 import '../src/css/common.css';
