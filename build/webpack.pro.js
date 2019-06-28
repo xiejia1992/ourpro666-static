@@ -18,7 +18,7 @@ module.exports = {
 	},
 	output: {
 		path: path.resolve(__dirname, '../static'), // 项目的打包文件路径
-		filename: 'js/[name].[chunkhash:8].js',
+		filename: 'js/app/[name].[chunkhash:8].js',
 		publicPath: './'
 	},
 	devtool: 'inline-source-map',
@@ -81,7 +81,8 @@ module.exports = {
 				},
 			],
 			prod: false,
-			publicPath: './../node_modules'
+			//publicPath: './../node_modules'
+			publicPath: 'https://unpkg.com'
 		}),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common'
