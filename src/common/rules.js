@@ -124,6 +124,14 @@ export default {
 			validator: validatePassword,
 			trigger: "blur",
 			message: "密码为6-16位数字和英文组合"
+		}],
+		lastpass: [{
+			required: true,
+			message: "密码不能为空"
+		}, {
+			validator: validatePassword,
+			trigger: "blur",
+			message: "密码为6-16位数字和英文组合"
 		}]
 	}
 }

@@ -7,10 +7,6 @@ function resolve(dir) {
 }
 
 module.exports = {
-	entry: {
-		'main': './src/main.js',
-		'dev': './src/app.js',
-	},
 	output: {
 		path: path.resolve(__dirname, '../static'), // 项目的打包文件路径
 		filename: '[name].js',

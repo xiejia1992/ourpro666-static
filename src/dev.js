@@ -1,5 +1,5 @@
-//import Vue from 'vue';
-//import ElementUI from 'element-ui';
+import Vue from 'vue';
+import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import App from './App.vue';
 import router from '../src/router/router.js';
@@ -25,7 +25,7 @@ Vue.prototype.$ajax.interceptors.request.use(
 		return Promise.reject(error);
 	});
 	
-//Vue.use(ElementUI);
+Vue.use(ElementUI);
 
 Vue.use(router);
 

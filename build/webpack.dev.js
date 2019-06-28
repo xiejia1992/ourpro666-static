@@ -9,8 +9,10 @@ console.log(webpackBaseConfig)
 function resolve(dir) {
 	return path.join(__dirname, '..', dir)
 }
-
 module.exports = merge(webpackBaseConfig, {
+	entry: {
+		'dev': './src/dev.js',
+	},
   devtool: '#cheap-module-eval-source-map',
   plugins: [
 		new HtmlWebpackPlugin({

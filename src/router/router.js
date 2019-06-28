@@ -8,7 +8,6 @@ import UserView from '../views/userView.vue';
 import LoginView from '../views/loginView.vue';
 import RegisterView from '../views/registerView.vue';
 import ForgetView from '../views/forgetView.vue';
-console.log(RegisterView)
 Vue.use(Router)
 
 const router = new Router({
