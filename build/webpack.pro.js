@@ -3,6 +3,7 @@ const webpack = require('webpack');
 var config = require('../config/index.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const {
 	CleanWebpackPlugin
 } = require("clean-webpack-plugin");
@@ -91,5 +92,6 @@ module.exports = {
 		new webpack.DefinePlugin({
 			API_URL: "'http://140.143.167.11'"
 		}),
+		new UglifyJsPlugin()
 	]
 }
